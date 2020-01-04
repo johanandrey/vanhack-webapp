@@ -14,7 +14,9 @@ class PreferencesController extends Controller
      */
     public function index()
     {
-        //
+        $preferences = Preference::latest()->paginate(5);
+        return view('preferences.index',compact('preferences'))
+            ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     /**
@@ -24,7 +26,7 @@ class PreferencesController extends Controller
      */
     public function create()
     {
-        //
+        return view('preferences.create');
     }
 
     /**
@@ -35,9 +37,15 @@ class PreferencesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|unique:colors|max:50',
+        ]);
+  
+        Preference::create($request->all());
+   
+        return redirect()->route('Preferences.index')
+                        ->with('success','Preference created successfully.');
     }
-
     /**
      * Display the specified resource.
      *
