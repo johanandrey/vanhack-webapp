@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class PreferencesController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of the preference.
      *
      * @return \Illuminate\Http\Response
      */
@@ -22,7 +22,7 @@ class PreferencesController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new preference.
      *
      * @return \Illuminate\Http\Response
      */
@@ -35,7 +35,7 @@ class PreferencesController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created preference in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -54,7 +54,7 @@ class PreferencesController extends Controller
                         ->with('success','Preference stored.');
     }
     /**
-     * Display the specified resource.
+     * Display the specified preference.
      *
      * @param  \App\Preference  $preference
      * @return \Illuminate\Http\Response
@@ -65,7 +65,7 @@ class PreferencesController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for editing the specified preference.
      *
      * @param  \App\Preference  $preference
      * @return \Illuminate\Http\Response
@@ -79,7 +79,7 @@ class PreferencesController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified preference in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Preference  $preference
@@ -100,7 +100,7 @@ class PreferencesController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified preference from storage.
      *
      * @param  \App\Preference  $preference
      * @return \Illuminate\Http\Response

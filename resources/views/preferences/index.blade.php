@@ -24,7 +24,7 @@
                 <th>Name</h>
                 <th>Favorite Pet</th>
                 <th>Favorite Color</th>
-                <th width="280px">Actions</th>
+                <th width="190px">Actions</th>
             </tr>
 
             @foreach ($preferences as $preference)
