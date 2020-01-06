@@ -30,19 +30,33 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Name:</strong>
-                <input type="text" name="name" class="form-control" placeholder="Name">
+                <input type="text" autofocus name="name" class="form-control" maxlength="50">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Detail:</strong>
-                <textarea class="form-control" style="height:150px" name="detail" placeholder="Detail"></textarea>
+                <strong>Favorite Color:</strong>
+                <select name="color_id">
+                    @foreach ($front[0] as $color)
+                    <option value="{{ $color->id }}">{{ $color->color}}</option>
+                    @endforeach
+                </select>
             </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            @foreach ($front[1] as $pet)
+                <div class="form-check-inline">
+                    <label class="form-check-label">
+                        <input type="radio" class="form-check-input" name="pet_id" value="{{ $pet->id }}">{{ $pet->pet}}
+                    </label>
+                </div>
+            @endforeach
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-primary">Submit</button>
         </div>
     </div>
-   
+
 </form>
 @endsection

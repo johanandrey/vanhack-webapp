@@ -17,24 +17,24 @@
             <p>{{ $message }}</p>
         </div>
     @endif
-    <div class="row">
+    <div>
         <table class="table table-bordered">
             <tr>
-                <th>No</th>
-                <th>Name</th>
-                <th>Color</th>
-                <th width="280px">Pet</th>
+                <th>id</th>
+                <th>Name</h>
+                <th>Favorite Pet</th>
+                <th>Favorite Color</th>
+                <th width="280px">Actions</th>
             </tr>
 
             @foreach ($preferences as $preference)
             <tr>
-                <td>{{ ++$i }}</td>
+                <td>{{ $preference->id }}</td>
                 <td>{{ $preference->name }}</td>
-                <td>{{ $preference->color_id }}</td>
-                <td>{{ $preference->pet_id }}</td>
+                <td>{{ $preference->pet->pet }}</td>
+                <td>{{ $preference->color->color }}</td>
                 <td>
                     <form action="{{ route('preferences.destroy',$preference->id) }}" method="POST">
-                        <a class="btn btn-info" href="{{ route('preferences.show',$preference->id) }}">Show</a>
                         <a class="btn btn-primary" href="{{ route('preferences.edit',$preference->id) }}">Edit</a>
                         @csrf
                         @method('DELETE')

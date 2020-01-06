@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Preference;
+use App\Pet;
+use App\Color;
 use Illuminate\Http\Request;
 
 class PreferencesController extends Controller
@@ -26,7 +28,10 @@ class PreferencesController extends Controller
      */
     public function create()
     {
-        return view('preferences.create');
+        $colors  = Color::orderBy('color')->get();
+        $pets = Pet::orderBy('id')->get();
+        $front = [ $colors, $pets ];
+        return view('preferences.create', compact('front'));
     }
 
     /**
@@ -38,13 +43,15 @@ class PreferencesController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|unique:colors|max:50',
+            'name' => 'required|unique:preferences|max:50',
+            'pet_id' => 'required',
+            'color_id' => 'required',
         ]);
   
         Preference::create($request->all());
-   
-        return redirect()->route('Preferences.index')
-                        ->with('success','Preference created successfully.');
+
+        return redirect()->route('preferences.index')
+                        ->with('success','Preference stored.');
     }
     /**
      * Display the specified resource.
@@ -65,7 +72,10 @@ class PreferencesController extends Controller
      */
     public function edit(Preference $preference)
     {
-        //
+        $colors  = Color::orderBy('color')->get();
+        $pets = Pet::orderBy('id')->get();
+        $front = [ $preference, $colors, $pets ];
+        return view('preferences.edit',compact('front'));
     }
 
     /**
@@ -77,7 +87,16 @@ class PreferencesController extends Controller
      */
     public function update(Request $request, Preference $preference)
     {
-        //
+        $request->validate([
+            'name' => 'required|max:50',
+            'pet_id' => 'required',
+            'color_id' => 'required',
+        ]);
+  
+        $preference->update($request->all());
+
+        return redirect()->route('preferences.index')
+                        ->with('success','Preference updated.');
     }
 
     /**
@@ -88,6 +107,8 @@ class PreferencesController extends Controller
      */
     public function destroy(Preference $preference)
     {
-        //
+        $preference->delete();
+        return redirect()->route('preferences.index')
+                        ->with('success','Preference deleted');
     }
 }
