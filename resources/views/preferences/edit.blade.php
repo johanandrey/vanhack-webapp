@@ -1,4 +1,4 @@
-@extends('Preferences.layout')
+@extends('preferences.layout')
    
 @section('content')
     <div class="row">
