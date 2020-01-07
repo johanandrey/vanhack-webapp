@@ -1,6 +1,10 @@
-Database changes:
+# vanhack-webapp
 
-php 
-php artisan migrate:fresh --seed
+# @author: Johan Andrey Barón
+# @email: johanandrey.baron@gmail.com
+# @description: Laravel project for vanhack test
 
-php artisan make:controller PreferencesController --resource --model=Preference
+TIP: 
+
+
+Apply database changes: php artisan migrate:fresh --seed
